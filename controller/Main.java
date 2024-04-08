@@ -37,7 +37,7 @@ public class Main {
             {
                 System.out.println("Blue wins!");
                 break;
-            }
+                }
             if (!isLiving(blue))
             {
                 System.out.println("Green wins!");
@@ -57,30 +57,30 @@ public class Main {
 
     public static void createTeam(ArrayList<PersonBase> team, int num, int start) {
         Random rnd = new Random();
-        int cy = 1;
+        int cy = 0;
         while (num-- > 0) {
             int n = start + rnd.nextInt(4);
             switch (n) {
                 case 0:
-                    team.add(new Crossbowman(HeroesNames.getRandomName(), new CoordXY(1, cy)));
+                    team.add(new Crossbowman(HeroesNames.getRandomName(), new CoordXY(9, cy)));
                     break;
                 case 1:
-                    team.add(new Spearman(HeroesNames.getRandomName(), new CoordXY(1, cy)));
+                    team.add(new Spearman(HeroesNames.getRandomName(), new CoordXY(9, cy)));
                     break;
                 case 2:
-                    team.add(new Wizard(HeroesNames.getRandomName(), new CoordXY(1, cy)));
+                    team.add(new Wizard(HeroesNames.getRandomName(), new CoordXY(9, cy)));
                     break;
                 case 3:
-                    team.add(new Peasant(HeroesNames.getRandomName(), new CoordXY(start * 3+1, cy)));
+                    team.add(new Peasant(HeroesNames.getRandomName(), new CoordXY((3-start) * 3, cy)));
                     break;
                 case 4:
-                    team.add(new Sniper(HeroesNames.getRandomName(), new CoordXY(10, cy)));
+                    team.add(new Sniper(HeroesNames.getRandomName(), new CoordXY(0, cy)));
                     break;
                 case 5:
-                    team.add(new Monk(HeroesNames.getRandomName(), new CoordXY(10, cy)));
+                    team.add(new Monk(HeroesNames.getRandomName(), new CoordXY(0, cy)));
                     break;
                 case 6:
-                    team.add(new Robber(HeroesNames.getRandomName(), new CoordXY(10, cy)));
+                    team.add(new Robber(HeroesNames.getRandomName(), new CoordXY(0, cy)));
                     break;
                 default:
                     System.out.println("!error!");
