@@ -1,6 +1,6 @@
 package person;
 
-import behavior.ActionInterface;
+import behavior.ActionInterfase;
 import behavior.CoordXY;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.Random;
 /**
  * База для персонажей.
  */
-public abstract class PersonBase implements ActionInterface {
+public abstract class PersonBase implements ActionInterfase {
     protected static Random rnd;
     static {
         rnd = new Random();
