@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Интерфейс взаимодействия персонажей
  */
-public interface ActionInterface {
+public interface ActionInterfase {
 
     /**
      * Один шаг действия персонажа
