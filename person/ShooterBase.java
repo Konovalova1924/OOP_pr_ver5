@@ -35,7 +35,13 @@ public abstract class ShooterBase extends PersonBase {
         this.effectiveDistance = effectiveDistance;
         this.level = 1;
     }
+    public int getAmmo() {
+        return ammo;
+    }
 
+    public void setAmmo(int ammo) {
+        this.ammo = ammo;
+    }
     /**
      * Атака противника
      *
