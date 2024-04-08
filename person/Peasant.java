@@ -33,7 +33,22 @@ public class Peasant extends PersonBase{
      */
     @Override
     public void step(ArrayList<PersonBase> enemies, ArrayList<PersonBase> friends) {
+        PersonBase pt = null;
+        int min = Integer.MAX_VALUE;
+        if (health <= 0)
+            return;
+        for (PersonBase friend : friends) {
+            if (friend instanceof ShooterBase) {
+                if (((ShooterBase) friend).getAmmo() < min) {
+                    min = ((ShooterBase) friend).getAmmo();
+                    pt = friend;
+                }
+            }
+        }
 
+        if (pt != null){
+           ((ShooterBase) pt).setAmmo(min + 1);
+        }
     }
 
     @Override
