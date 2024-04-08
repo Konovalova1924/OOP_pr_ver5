@@ -1,6 +1,6 @@
 package behavior;
 
-import person.PersonBase;
+import person.PersonBase;   
 
 /**
  * Класс для позиционирования персонажей
