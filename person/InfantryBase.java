@@ -64,7 +64,7 @@ public abstract class InfantryBase extends PersonBase {
 
         position.increment(px[minIdx], py[minIdx]);
         history = " движение " + position;
-        // System.out.println(history);
+        System.out.println(history);
     }
 
     public void attack(PersonBase target, boolean isMoved) {
@@ -81,7 +81,7 @@ public abstract class InfantryBase extends PersonBase {
         }
         int res = target.getDamage(damage);
         history = history + " атакует " + target.name + " , получил " + res + " повреждение ";
-        // System.out.println(history);
+        System.out.println(history);
     }
 
     @Override
