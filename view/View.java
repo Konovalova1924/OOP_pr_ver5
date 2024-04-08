@@ -5,15 +5,20 @@ import controller.Main;
 
 import java.util.Collections;
 
+import behavior.CoordXY;
+
 public class View {
     private static int step = 1;
     private static int l = 0;
     private static final String top10 = formatDiv("a") + String.join("", Collections.nCopies(9, formatDiv("-b"))) + formatDiv("-c");
     private static final String midl10 = formatDiv("d") + String.join("", Collections.nCopies(9, formatDiv("-e"))) + formatDiv("-f");
     private static final String bottom10 = formatDiv("g") + String.join("", Collections.nCopies(9, formatDiv("-h"))) + formatDiv("-i");
+    
     private static void tabSetter(int cnt, int max){
         int dif = max - cnt + 2;
-        if (dif>0) System.out.printf("%" + dif + "s", ":\t"); else System.out.print(":\t");
+        if (dif>0) 
+            System.out.printf("%" + dif + "s", " "); 
+            System.out.print(":\t");
     }
     private static String formatDiv(String str) {
         return str.replace('a', '┌')
@@ -30,8 +35,12 @@ public class View {
 
     private static String getChar(int x, int y){
         String out = "| ";
-        for (PersonBase human: Main.all) {
-            if (human.getCoords()[0] == x && human.getCoords()[1] == y){
+        for (PersonBase human: Main.all) 
+        {
+            CoordXY pos = human.getPosition();
+            if (pos.getX() == x && pos.getY() == y)
+            {
+            // if (human.getCoords()[0] == x && human.getCoords()[1] == y){
                 if (human.getHealth() == 0)
                 {
                     out = "|" + (AnsyView.ANSI_RED + human.getInfo().charAt(0) + AnsyView.ANSI_RESET);
@@ -55,12 +64,13 @@ public class View {
         System.out.print("_".repeat(l*2));
         System.out.println();
         System.out.print(top10 + "    ");
-        System.out.print("Blue side");
+        System.out.print(AnsyView.ANSI_BLUE + "Blue side" + AnsyView.ANSI_RESET);
         //for (int i = 0; i < l[0]-9; i++)
-        System.out.print(" ".repeat(l-9));
-        System.out.println(":\tGreen side");
-        for (int i = 1; i < 11; i++) {
-            System.out.print(getChar(1, i));
+        // System.out.print(" ".repeat(l-9));
+        tabSetter(9, l);
+        System.out.println(AnsyView.ANSI_GREEN + "Green side" + AnsyView.ANSI_RESET);
+        for (int x = 0; x < 10; x++) {
+            System.out.print(getChar(x, 0));
         }
         System.out.print("|    ");
         System.out.print(Main.blue.get(0));
@@ -68,18 +78,18 @@ public class View {
         System.out.println(Main.green.get(0));
         System.out.println(midl10);
 
-        for (int i = 2; i < 10; i++) {
-            for (int j = 1; j < 11; j++) {
-                System.out.print(getChar(i, j));
+        for (int y = 1; y < 9; y++) {
+            for (int x = 0; x < 10; x++) {
+                System.out.print(getChar(x, y));
             }
             System.out.print("|    ");
-            System.out.print(Main.blue.get(i-1));
-            tabSetter(Main.blue.get(i-1).toString().length(), l);
-            System.out.println(Main.green.get(i-1));
+            System.out.print(Main.blue.get(y));
+            tabSetter(Main.blue.get(y).toString().length(), l);
+            System.out.println(Main.green.get(y));
             System.out.println(midl10);
         }
-        for (int j = 1; j < 11; j++) {
-            System.out.print(getChar(10, j));
+        for (int x = 0; x < 10; x++) {
+            System.out.print(getChar(x, 9));
         }
         System.out.print("|    ");
         System.out.print(Main.blue.get(9));
